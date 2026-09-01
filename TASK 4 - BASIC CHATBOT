@@ -1,0 +1,38 @@
+print("Chatbot started! Type 'bye' to exit.")
+
+while True:
+    user_input = input("You: ")
+    text = user_input.lower()
+    
+    # Systematically grouping similar words together using lists
+    if text in ["hello", "hi", "hey", "good morning"]:
+        print("Bot: Hi there How can I help you today?")
+        
+    elif text in ["how are you", "how are you doing", "what's up"]:
+        print("Bot: I'm doing great, thanks for asking")
+        
+    elif text in ["what is your name", "who are you"]:
+        print("Bot: I am a basic Python bot.")
+        
+    elif text in ["ok", "okay", "cool", "nice", "good"]:
+        print("Bot: Awesome")
+        
+    elif text in ["thank you", "thanks", "thanks"]:
+        print("Bot: You're very welcome")
+        
+    elif text in ["what can you do", "help"]:
+        print("Bot: I can chat with you, say hi, or tell you my name.")
+        
+    # Using 'in' to check if a word is anywhere in the sentence
+    elif "time" in text:
+        print("Bot: I can't check the clock yet, I'm just a simple bot")
+        
+    elif "weather" in text:
+        print("Bot: I don't have internet access to check the weather, sorry")
+        
+    elif text in ["bye", "goodbye", "exit", "quit", "cya"]:
+        print("Bot: Goodbye Have a great day")
+        break
+        
+    else:
+        print("Bot: I don't understand that yet. Can you say it differently?")
