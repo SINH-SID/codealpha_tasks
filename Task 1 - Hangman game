@@ -1,0 +1,48 @@
+import random
+
+# start coding our Hangman game
+word_list = ["apple", "mango", "tiger", "water", "house"]
+secret = random.choice(word_list)
+
+chances = 6
+letters_guessed = ""
+
+print("Welcome to my Hangman game!")
+print("The word has", len(secret), "letters.")
+print("-------------------")
+
+while chances > 0:
+    # Build krte hai word to show to the player
+    display_word = ""
+    for char in secret:
+        if char in letters_guessed:
+            display_word = display_word + char
+        else:
+            display_word = display_word + "_"
+            
+    print("Word:", display_word)
+    
+    # Stop the loop if they guessed everything
+    if display_word == secret:
+        print("Yay! You won! The word is", secret)
+        break
+        
+    print("Chances left:", chances)
+    guess = input("Type a letter: ")
+    
+    # Save the letter they typed
+    letters_guessed = letters_guessed + guess
+    
+    # Check if the guess was right or wrong
+    if guess in secret:
+        print("Nice guess!")
+    else:
+        print("Oops, wrong letter.")
+        chances = chances - 1
+        
+    print("-------------------")
+
+# Check if they ran out of chances
+if chances == 0:
+    print("Game over! You lost.")
+    print("The real word was:", secret)
