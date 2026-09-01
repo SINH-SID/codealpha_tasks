@@ -1,0 +1,31 @@
+import re
+
+print("Welcome to my Email Extractor!")
+print("Make sure you have a file named 'raw_data.txt' with some emails in it.")
+print("---")
+
+# Open the source file and read all the text inside
+file_in = open("raw_data.txt", "r")
+text_inside = file_in.read()
+file_in.close()
+
+# This simple pattern looks for text, an @ symbol, and more text (no spaces)
+pattern = r'\S+@\S+'
+
+# findall grabs everything that matches the pattern and puts it in a list
+found_emails = re.findall(pattern, text_inside)
+
+print("Awesome, I found", len(found_emails), "emails in the document.")
+
+# Open a new file to save the results
+file_out = open("clean_emails.txt", "w")
+
+# Loop through our list and write them one by one
+for email in found_emails:
+    print("Saving:", email)
+    file_out.write(email + "\n")
+
+file_out.close()
+
+print("---")
+print("Done! All emails are safely stored in clean_emails.txt.")
