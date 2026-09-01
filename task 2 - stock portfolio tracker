@@ -1,0 +1,37 @@
+print("Welcome to my Stock Tracker!")
+print("I only know the prices for: AAPLE1, MICROSOFT2, GOOGLE3, CODEALPHA4, TESLA5")
+
+# my stock prices list
+prices = {"AAPLE1": 180, "MICROSOFT2": 250, "GOOGLE3": 140, "CODEALPHA4": 320, "TESLA5": 250}
+
+my_total = 0
+keep_going = "yes"
+
+while keep_going == "yes":
+    stock = input("Which stock did you buy? ")
+    
+    if stock in prices:
+        amount_text = input("How many shares did you buy? ")
+        amount = int(amount_text)
+        
+        # calculate the cost
+        cost = prices[stock] * amount
+        my_total = my_total + cost
+        
+        print("Okay, added", amount, "shares of", stock)
+    else:
+        print("Sorry, that stock is not in my list.")
+        
+    print("---")
+    keep_going = input("Do you want to add another stock? (yes/no): ")
+
+print("All done!")
+print("Your total money is: $", my_total)
+
+# saving to a text file
+my_file = open("my_portfolio.txt", "w")
+my_file.write("Total value: $" + str(my_total))
+my_file.write("\n")
+my_file.close()
+
+print("I saved your total in my_portfolio.txt")
